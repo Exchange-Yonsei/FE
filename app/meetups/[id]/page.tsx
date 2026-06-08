@@ -23,6 +23,9 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
           <MeetupStatusBadge status={meetup.status} isFull={isFull} />
         </div>
         <h1 className="mt-5 text-3xl font-black leading-tight text-ink">{meetup.title}</h1>
+        <div className="mt-5 rounded-2xl bg-mint p-4 text-sm font-semibold leading-6 text-emerald-900">
+          This is a small meetup hosted by a Yonsei student. Request to join, and the host will review your profile. If approved, you'll receive the private WhatsApp link.
+        </div>
         <p className="mt-4 whitespace-pre-line text-base leading-8 text-stone-700">{meetup.description}</p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <Info icon={<MapPin className="h-4 w-4" />} label="Location" value={meetup.location} />

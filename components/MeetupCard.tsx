@@ -18,6 +18,13 @@ export function MeetupCard({ meetup }: { meetup: PublicMeetup }) {
         {meetup.title}
       </Link>
       <p className="mt-3 line-clamp-2 text-sm leading-6 text-stone-600">{meetup.description}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {["Korean Host", "Small Group", "English Friendly"].map((badge) => (
+          <span key={badge} className="rounded-full bg-mint px-3 py-1 text-xs font-bold text-leaf">
+            {badge}
+          </span>
+        ))}
+      </div>
       <div className="mt-5 space-y-2 text-sm text-stone-700">
         <p className="flex items-center gap-2">
           <MapPin className="h-4 w-4 text-leaf" aria-hidden />

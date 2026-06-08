@@ -28,8 +28,8 @@ export default async function MeetupsPage({
     <main className="mx-auto max-w-6xl px-4 py-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-3xl font-black text-ink">Browse Meetups</h1>
-          <p className="mt-2 text-stone-600">Find people to eat with near Yonsei.</p>
+          <h1 className="text-3xl font-black text-ink">Korean-hosted meetups near Yonsei</h1>
+          <p className="mt-2 text-stone-600">Join small food, cafe, game, and culture plans with local students.</p>
         </div>
         <Link className="btn-primary" href="/meetups/new">
           <Plus className="h-4 w-4" aria-hidden />
@@ -70,7 +70,7 @@ export default async function MeetupsPage({
       </div>
       {filtered.length === 0 ? (
         <div className="mt-6">
-          <EmptyState title="No meetups found" description="Try another category or show closed meetups too." href="/meetups/new" action="Create Meetup" />
+          <EmptyState title="No Korean-hosted meetups yet." description="Become the first host and create a small meetup for exchange students." href="/meetups/new" action="Create Meetup" />
         </div>
       ) : null}
     </main>

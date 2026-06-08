@@ -3,8 +3,8 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "TableMate Yonsei",
-  description: "Casual meetups for Yonsei students and exchange students."
+  title: "LocalMate Yonsei",
+  description: "Meet Korean students through small Yonsei meetups."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

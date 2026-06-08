@@ -41,12 +41,6 @@ with check (
     from public.meetups
     where meetups.id = participants.meetup_id
       and meetups.status = 'OPEN'
-      and (
-        select count(*)
-        from public.participants approved
-        where approved.meetup_id = meetups.id
-          and approved.status = 'APPROVED'
-      ) < meetups.max_participants
   )
 );
 

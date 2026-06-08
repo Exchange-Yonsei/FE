@@ -3,18 +3,18 @@ import { Coffee, MessageCircle, UsersRound, Utensils } from "lucide-react";
 
 const cards = [
   {
-    title: "Find people to eat with",
-    copy: "Join small food plans around Sinchon, campus, and Seoul.",
+    title: "Meet Korean hosts",
+    copy: "Join small meetups created by Yonsei students.",
     icon: Utensils
   },
   {
-    title: "Join campus meetups",
-    copy: "Study, cafes, culture trips, sports, and casual hangs.",
+    title: "Small groups, real conversations",
+    copy: "No huge parties. Just food, cafes, games, and local experiences.",
     icon: UsersRound
   },
   {
-    title: "Connect through WhatsApp",
-    copy: "Approved participants receive the invite link privately.",
+    title: "Private invite after approval",
+    copy: "Approved participants receive the WhatsApp link privately.",
     icon: MessageCircle
   }
 ];
@@ -24,22 +24,19 @@ export default function Home() {
     <main>
       <section className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
-          <p className="inline-flex rounded-full bg-peach px-4 py-2 text-sm font-bold text-stone-800">TableMate Yonsei</p>
+          <p className="inline-flex rounded-full bg-peach px-4 py-2 text-sm font-bold text-stone-800">LocalMate Yonsei</p>
           <h1 className="mt-6 text-4xl font-black leading-tight text-ink sm:text-6xl">
-            <span className="block">Meet students.</span>
-            <span className="block">Eat together.</span>
-            <span className="block">Explore Seoul.</span>
+            Meet Korean students through small Yonsei meetups.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-8 text-stone-600">
-            Casual meetups for Yonsei students and exchange students.
+            Join casual food, cafe, game, and culture meetups hosted by Yonsei students. Made for exchange students who want real Korean friends, not just big parties.
           </p>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-stone-600">No payments. No complicated setup. Just meet people.</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link className="btn-primary" href="/meetups">
-              Browse Meetups
+              Find Korean-hosted meetups
             </Link>
             <Link className="btn-secondary" href="/meetups/new">
-              Create Meetup
+              Become a host
             </Link>
           </div>
         </div>

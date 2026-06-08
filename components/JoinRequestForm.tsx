@@ -54,7 +54,7 @@ export function JoinRequestForm({ meetupId, disabled }: { meetupId: string; disa
   return (
     <form onSubmit={submit} className="rounded-3xl border border-stone-200 bg-white p-5 shadow-soft">
       <h2 className="text-xl font-black text-ink">Request to Join</h2>
-      <p className="mt-2 text-sm text-stone-600">The host will review your request. Approved participants can join through WhatsApp.</p>
+      <p className="mt-2 text-sm text-stone-600">Tell the host a little about yourself. Approved participants will receive the private WhatsApp link.</p>
       <div className="mt-5 space-y-4">
         <label className="block space-y-2">
           <span className="label">Name</span>
@@ -65,11 +65,11 @@ export function JoinRequestForm({ meetupId, disabled }: { meetupId: string; disa
           <input className="field" value={nationality} onChange={(event) => setNationality(event.target.value)} disabled={disabled} />
         </label>
         <label className="block space-y-2">
-          <span className="label">Short message</span>
+          <span className="label">Why do you want to join?</span>
           <textarea className="field min-h-24" value={shortMessage} onChange={(event) => setShortMessage(event.target.value)} disabled={disabled} />
         </label>
         <label className="block space-y-2">
-          <span className="label">Contact info optional</span>
+          <span className="label">WhatsApp or Instagram ID optional</span>
           <input className="field" value={contactInfo} onChange={(event) => setContactInfo(event.target.value)} disabled={disabled} />
         </label>
       </div>
