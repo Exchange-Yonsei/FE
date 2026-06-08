@@ -7,9 +7,15 @@ const styles: Record<ParticipantStatus, string> = {
 };
 
 export function ParticipantStatusBadge({ status }: { status: ParticipantStatus }) {
+  const labels: Record<ParticipantStatus, string> = {
+    PENDING: "Request sent",
+    APPROVED: "Joined",
+    REJECTED: "Removed"
+  };
+
   return (
     <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${styles[status]}`}>
-      {status[0] + status.slice(1).toLowerCase()}
+      {labels[status]}
     </span>
   );
 }

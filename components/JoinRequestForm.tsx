@@ -54,7 +54,7 @@ export function JoinRequestForm({ meetupId, disabled }: { meetupId: string; disa
   return (
     <form onSubmit={submit} className="rounded-3xl border border-stone-200 bg-white p-5 shadow-soft">
       <h2 className="text-xl font-black text-ink">Request to Join</h2>
-      <p className="mt-2 text-sm text-stone-600">Tell the host a little about yourself. Approved participants will receive the private WhatsApp link.</p>
+      <p className="mt-2 text-sm text-stone-600">Tell the host a little about yourself. Joined participants will receive the private WhatsApp link.</p>
       <div className="mt-5 space-y-4">
         <label className="block space-y-2">
           <span className="label">Name</span>

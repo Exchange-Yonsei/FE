@@ -14,7 +14,7 @@ const cards = [
   },
   {
     title: "Private invite after approval",
-    copy: "Approved participants receive the WhatsApp link privately.",
+    copy: "Joined participants receive the WhatsApp link privately.",
     icon: MessageCircle
   }
 ];

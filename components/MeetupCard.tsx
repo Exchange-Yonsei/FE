@@ -36,7 +36,7 @@ export function MeetupCard({ meetup }: { meetup: PublicMeetup }) {
         </p>
         <p className="flex items-center gap-2">
           <Users className="h-4 w-4 text-leaf" aria-hidden />
-          {meetup.approved_count}/{meetup.max_participants} approved
+          {meetup.approved_count}/{meetup.max_participants} joined
         </p>
       </div>
       <dl className="mt-5 grid grid-cols-2 gap-3 text-sm">

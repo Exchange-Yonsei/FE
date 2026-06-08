@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { MeetupHostActions, ParticipantActions } from "@/components/DashboardActions";
+import { MeetupHostActions, ParticipantActions, RemoveParticipantAction } from "@/components/DashboardActions";
 import { ParticipantStatusBadge } from "@/components/ParticipantStatusBadge";
 import { getHostMeetup } from "@/lib/data";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
@@ -17,6 +17,7 @@ export default async function HostMeetupPage({ params }: { params: Promise<{ id:
   const { id } = await params;
   const meetup = await getHostMeetup(id);
   if (!meetup) notFound();
+  const joinedParticipants = meetup.participants.filter((participant) => participant.status === "APPROVED");
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
@@ -32,15 +33,15 @@ export default async function HostMeetupPage({ params }: { params: Promise<{ id:
         <dl className="mt-6 grid gap-3 sm:grid-cols-2">
           <Info label="Category" value={meetup.category} />
           <Info label="Language" value={meetup.language} />
-          <Info label="Max participants" value={String(meetup.max_participants)} />
+          <Info label="Joined participants" value={`${joinedParticipants.length}/${meetup.max_participants}`} />
           <Info label="Estimated cost" value={formatCostRange(meetup.estimated_cost_min, meetup.estimated_cost_max)} />
           <Info label="WhatsApp link" value={meetup.whatsapp_link ?? ""} />
-          <Info label="Status" value={meetup.status} />
+          <Info label="Status" value={meetup.status === "CLOSED" ? "Closed" : "Open"} />
         </dl>
         <p className="mt-6 whitespace-pre-line leading-7 text-stone-700">{meetup.description}</p>
       </section>
       <section className="mt-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
-        <h2 className="text-xl font-black text-ink">Participant requests</h2>
+        <h2 className="text-xl font-black text-ink">Participants</h2>
         <div className="mt-4 grid gap-3">
           {meetup.participants.map((participant) => (
             <div key={participant.id} className="rounded-2xl border border-stone-200 p-4">
@@ -55,6 +56,7 @@ export default async function HostMeetupPage({ params }: { params: Promise<{ id:
                   {participant.contact_info ? <p className="mt-2 text-sm font-semibold text-stone-700">Contact: {participant.contact_info}</p> : null}
                 </div>
                 {participant.status === "PENDING" ? <ParticipantActions participantId={participant.id} meetupId={meetup.id} /> : null}
+                {participant.status === "APPROVED" ? <RemoveParticipantAction participantId={participant.id} meetupId={meetup.id} /> : null}
               </div>
             </div>
           ))}

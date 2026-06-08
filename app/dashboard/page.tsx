@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { EmptyState } from "@/components/EmptyState";
-import { MeetupHostActions, ParticipantActions } from "@/components/DashboardActions";
+import { MeetupHostActions, ParticipantActions, RemoveParticipantAction } from "@/components/DashboardActions";
 import { ParticipantStatusBadge } from "@/components/ParticipantStatusBadge";
 import { getHostMeetups } from "@/lib/data";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
@@ -33,6 +33,7 @@ export default async function DashboardPage() {
           const pending = meetup.participants.filter((participant) => participant.status === "PENDING");
           const approved = meetup.participants.filter((participant) => participant.status === "APPROVED");
           const rejected = meetup.participants.filter((participant) => participant.status === "REJECTED");
+          const hasParticipants = meetup.participants.length > 0;
 
           return (
             <article key={meetup.id} className="rounded-3xl border border-stone-200 bg-white p-5 shadow-soft">
@@ -42,7 +43,7 @@ export default async function DashboardPage() {
                     {meetup.title}
                   </Link>
                   <p className="mt-2 text-sm text-stone-600">{meetup.location} · {formatDateTime(meetup.starts_at)}</p>
-                  <p className="mt-2 text-sm font-semibold text-leaf">{approved.length}/{meetup.max_participants} approved · {meetup.status}</p>
+                  <p className="mt-2 text-sm font-semibold text-leaf">{approved.length}/{meetup.max_participants} joined · {meetup.status === "CLOSED" ? "Closed" : "Open"}</p>
                 </div>
                 <MeetupHostActions meetupId={meetup.id} status={meetup.status} />
               </div>
@@ -50,9 +51,15 @@ export default async function DashboardPage() {
                 <p className="text-sm font-bold text-leaf">Private WhatsApp link</p>
                 <p className="mt-1 break-all text-sm text-ink">{meetup.whatsapp_link}</p>
               </div>
-              <RequestGroup title="Pending requests" participants={pending} meetupId={meetup.id} showActions />
-              <RequestGroup title="Approved participants" participants={approved} meetupId={meetup.id} />
-              <RequestGroup title="Rejected participants" participants={rejected} meetupId={meetup.id} />
+              {hasParticipants ? (
+                <>
+                  <RequestGroup title="Join requests" participants={pending} meetupId={meetup.id} showActions />
+                  <RequestGroup title="Joined participants" participants={approved} meetupId={meetup.id} showRemoveAction />
+                  <RequestGroup title="Removed participants" participants={rejected} meetupId={meetup.id} />
+                </>
+              ) : (
+                <p className="mt-5 text-sm text-stone-500">No participants yet.</p>
+              )}
             </article>
           );
         })}
@@ -70,7 +77,8 @@ function RequestGroup({
   title,
   participants,
   meetupId,
-  showActions = false
+  showActions = false,
+  showRemoveAction = false
 }: {
   title: string;
   participants: Array<{
@@ -83,32 +91,32 @@ function RequestGroup({
   }>;
   meetupId: string;
   showActions?: boolean;
+  showRemoveAction?: boolean;
 }) {
+  if (!participants.length) return null;
+
   return (
     <section className="mt-5">
       <h2 className="text-sm font-black uppercase tracking-wide text-stone-500">{title}</h2>
-      {participants.length ? (
-        <div className="mt-3 grid gap-3">
-          {participants.map((participant) => (
-            <div key={participant.id} className="rounded-2xl border border-stone-200 p-4">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <p className="font-bold text-ink">{participant.name}</p>
-                    <ParticipantStatusBadge status={participant.status} />
-                  </div>
-                  <p className="mt-2 text-sm text-stone-600">{participant.nationality || "Nationality not provided"}</p>
-                  {participant.short_message ? <p className="mt-2 text-sm leading-6 text-stone-700">{participant.short_message}</p> : null}
-                  {participant.contact_info ? <p className="mt-2 text-sm font-semibold text-stone-700">Contact: {participant.contact_info}</p> : null}
+      <div className="mt-3 grid gap-3">
+        {participants.map((participant) => (
+          <div key={participant.id} className="rounded-2xl border border-stone-200 p-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="font-bold text-ink">{participant.name}</p>
+                  <ParticipantStatusBadge status={participant.status} />
                 </div>
-                {showActions ? <ParticipantActions participantId={participant.id} meetupId={meetupId} /> : null}
+                <p className="mt-2 text-sm text-stone-600">{participant.nationality || "Nationality not provided"}</p>
+                {participant.short_message ? <p className="mt-2 text-sm leading-6 text-stone-700">{participant.short_message}</p> : null}
+                {participant.contact_info ? <p className="mt-2 text-sm font-semibold text-stone-700">Contact: {participant.contact_info}</p> : null}
               </div>
+              {showActions ? <ParticipantActions participantId={participant.id} meetupId={meetupId} /> : null}
+              {showRemoveAction ? <RemoveParticipantAction participantId={participant.id} meetupId={meetupId} /> : null}
             </div>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-2 text-sm text-stone-500">Nothing here yet.</p>
-      )}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

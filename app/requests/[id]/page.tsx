@@ -30,11 +30,11 @@ export default async function RequestPage({
           <span className="text-sm text-stone-500">Request ID: {request.id}</span>
         </div>
         <h1 className="mt-5 text-3xl font-black text-ink">{request.meetup?.title ?? "Meetup request"}</h1>
-        {request.status === "PENDING" ? <p className="mt-4 text-stone-700">Waiting for host approval.</p> : null}
-        {request.status === "REJECTED" ? <p className="mt-4 text-stone-700">Sorry, your request was not approved.</p> : null}
+        {request.status === "PENDING" ? <p className="mt-4 text-stone-700">Your request has been sent. Check back here for updates.</p> : null}
+        {request.status === "REJECTED" ? <p className="mt-4 text-stone-700">This request is no longer active.</p> : null}
         {request.status === "APPROVED" && request.meetup ? (
           <div className="mt-5 space-y-4">
-            <p className="text-stone-700">You are approved. Use the private WhatsApp link to join the group.</p>
+            <p className="text-stone-700">You are in. Use the private WhatsApp link to join the group.</p>
             <a className="btn-primary w-full sm:w-auto" href={request.meetup.whatsapp_link} target="_blank" rel="noreferrer">
               <MessageCircle className="h-4 w-4" aria-hidden />
               Open WhatsApp

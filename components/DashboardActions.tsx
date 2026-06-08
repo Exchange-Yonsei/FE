@@ -29,6 +29,21 @@ export function ParticipantActions({ participantId, meetupId }: { participantId:
   );
 }
 
+export function RemoveParticipantAction({ participantId, meetupId }: { participantId: string; meetupId: string }) {
+  const [pending, startTransition] = useTransition();
+
+  return (
+    <button
+      className="btn-secondary px-4 py-2"
+      type="button"
+      disabled={pending}
+      onClick={() => startTransition(() => updateParticipantStatus(participantId, "REJECTED", meetupId))}
+    >
+      Remove participant
+    </button>
+  );
+}
+
 export function MeetupHostActions({ meetupId, status }: { meetupId: string; status: "OPEN" | "CLOSED" }) {
   const [pending, startTransition] = useTransition();
   const nextStatus = status === "OPEN" ? "CLOSED" : "OPEN";
@@ -41,7 +56,7 @@ export function MeetupHostActions({ meetupId, status }: { meetupId: string; stat
         disabled={pending}
         onClick={() => startTransition(() => updateMeetupStatus(meetupId, nextStatus))}
       >
-        {status === "OPEN" ? "Close meetup" : "Reopen meetup"}
+        {status === "OPEN" ? "Close Meetup" : "Reopen Meetup"}
       </button>
       <button
         className="inline-flex items-center justify-center gap-2 rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-700 disabled:opacity-60"

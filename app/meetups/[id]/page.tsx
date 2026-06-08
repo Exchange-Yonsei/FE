@@ -14,6 +14,12 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
 
   const isFull = meetup.approved_count >= meetup.max_participants;
   const disabled = meetup.status === "CLOSED" || isFull || meetup.id.startsWith("mock-");
+  const unavailableMessage =
+    meetup.status === "CLOSED"
+      ? "This meetup is closed. The host is no longer accepting new participants."
+      : isFull
+        ? "This meetup is full. All spots have been claimed."
+        : null;
 
   return (
     <main className="mx-auto grid max-w-6xl gap-6 px-4 py-8 lg:grid-cols-[1fr_24rem]">
@@ -24,13 +30,13 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
         </div>
         <h1 className="mt-5 text-3xl font-black leading-tight text-ink">{meetup.title}</h1>
         <div className="mt-5 rounded-2xl bg-mint p-4 text-sm font-semibold leading-6 text-emerald-900">
-          This is a small meetup hosted by a Yonsei student. Request to join, and the host will review your profile. If approved, you'll receive the private WhatsApp link.
+          This is a small meetup hosted by a Yonsei student. Request to join, and the host will review your profile. If you join, you'll receive the private WhatsApp link.
         </div>
         <p className="mt-4 whitespace-pre-line text-base leading-8 text-stone-700">{meetup.description}</p>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <Info icon={<MapPin className="h-4 w-4" />} label="Location" value={meetup.location} />
           <Info icon={<CalendarClock className="h-4 w-4" />} label="Starts" value={formatDateTime(meetup.starts_at)} />
-          <Info icon={<Users className="h-4 w-4" />} label="Participants" value={`${meetup.approved_count}/${meetup.max_participants} approved`} />
+          <Info icon={<Users className="h-4 w-4" />} label="Participants" value={`${meetup.approved_count}/${meetup.max_participants} joined`} />
           <Info label="Estimated cost" value={formatCostRange(meetup.estimated_cost_min, meetup.estimated_cost_max)} />
           <Info label="Language" value={meetup.language} />
           <Info label="Host" value={meetup.host_name} />
@@ -42,7 +48,7 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
           </div>
         ) : null}
         <div className="mt-6">
-          <h2 className="text-lg font-black text-ink">Approved participants</h2>
+          <h2 className="text-lg font-black text-ink">Joined participants</h2>
           {meetup.approvedParticipants.length ? (
             <ul className="mt-3 flex flex-wrap gap-2">
               {meetup.approvedParticipants.map((participant) => (
@@ -52,11 +58,12 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
               ))}
             </ul>
           ) : (
-            <p className="mt-2 text-sm text-stone-600">No approved participants yet.</p>
+            <p className="mt-2 text-sm text-stone-600">No joined participants yet.</p>
           )}
         </div>
       </section>
       <aside>
+        {unavailableMessage ? <p className="mb-3 rounded-2xl bg-stone-100 p-3 text-sm font-semibold text-stone-700">{unavailableMessage}</p> : null}
         <JoinRequestForm meetupId={meetup.id} disabled={disabled} />
         {meetup.id.startsWith("mock-") ? (
           <p className="mt-3 rounded-2xl bg-amber-50 p-3 text-sm text-amber-800">Mock meetups are examples. Connect Supabase to create real requests.</p>
