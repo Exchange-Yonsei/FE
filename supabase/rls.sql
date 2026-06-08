@@ -110,9 +110,6 @@ returns table (
   updated_at timestamptz,
   meetup jsonb
 )
-language sql
-security definer
-set search_path = public
 as $$
   select
     p.id,
@@ -139,6 +136,9 @@ as $$
   join public.meetups m on m.id = p.meetup_id
   where p.id = request_id
   limit 1;
-$$;
+$$
+language sql
+security definer
+set search_path = public;
 
 grant execute on function public.get_participant_request(uuid) to anon, authenticated;

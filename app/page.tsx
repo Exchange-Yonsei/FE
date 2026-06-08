@@ -25,7 +25,11 @@ export default function Home() {
       <section className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div>
           <p className="inline-flex rounded-full bg-peach px-4 py-2 text-sm font-bold text-stone-800">TableMate Yonsei</p>
-          <h1 className="mt-6 text-4xl font-black leading-tight text-ink sm:text-6xl">Meet students. Eat together. Explore Seoul.</h1>
+          <h1 className="mt-6 text-4xl font-black leading-tight text-ink sm:text-6xl">
+            <span className="block">Meet students.</span>
+            <span className="block">Eat together.</span>
+            <span className="block">Explore Seoul.</span>
+          </h1>
           <p className="mt-5 max-w-xl text-lg leading-8 text-stone-600">
             Casual meetups for Yonsei students and exchange students.
           </p>
