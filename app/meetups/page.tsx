@@ -36,7 +36,7 @@ export default async function MeetupsPage({
           Create Meetup
         </Link>
       </div>
-      <form className="mt-6 grid gap-3 rounded-3xl border border-stone-200 bg-white p-4 shadow-soft sm:grid-cols-3">
+      <form className="mt-6 grid gap-3 rounded-3xl border border-blue-soft bg-white p-4 shadow-soft sm:grid-cols-3">
         <label className="block space-y-2">
           <span className="label">Category</span>
           <select className="field" name="category" defaultValue={params.category ?? "All"}>
@@ -54,8 +54,8 @@ export default async function MeetupsPage({
           </select>
         </label>
         <div className="flex items-end gap-3">
-          <label className="flex h-12 flex-1 items-center gap-3 rounded-2xl border border-stone-200 px-4 text-sm font-semibold">
-            <input name="open" value="1" type="checkbox" defaultChecked={params.open === "1"} />
+          <label className="flex h-12 flex-1 items-center gap-3 rounded-2xl border border-blue-soft px-4 text-sm font-semibold text-ink">
+            <input className="h-4 w-4 accent-yonsei-secondary focus:ring-yonsei-secondary" name="open" value="1" type="checkbox" defaultChecked={params.open === "1"} />
             Open only
           </label>
           <button className="btn-secondary h-12 px-5 py-0" type="submit">

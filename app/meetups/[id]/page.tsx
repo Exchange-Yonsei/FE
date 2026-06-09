@@ -23,13 +23,13 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
 
   return (
     <main className="mx-auto grid max-w-6xl gap-6 px-4 py-8 lg:grid-cols-[1fr_24rem]">
-      <section className="rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
+      <section className="rounded-3xl border border-blue-soft bg-white p-6 shadow-soft">
         <div className="flex flex-wrap items-center gap-3">
           <CategoryBadge category={meetup.category} />
           <MeetupStatusBadge status={meetup.status} isFull={isFull} />
         </div>
         <h1 className="mt-5 text-3xl font-black leading-tight text-ink">{meetup.title}</h1>
-        <div className="mt-5 rounded-2xl bg-mint p-4 text-sm font-semibold leading-6 text-emerald-900">
+        <div className="mt-5 rounded-2xl bg-yonsei-light p-4 text-sm font-semibold leading-6 text-yonsei-primary">
           This is a small meetup hosted by a Yonsei student. Request to join, and the host will review your profile. If you join, you'll receive the private WhatsApp link.
         </div>
         <p className="mt-4 whitespace-pre-line text-base leading-8 text-stone-700">{meetup.description}</p>
@@ -52,7 +52,7 @@ export default async function MeetupDetailPage({ params }: { params: Promise<{ i
           {meetup.approvedParticipants.length ? (
             <ul className="mt-3 flex flex-wrap gap-2">
               {meetup.approvedParticipants.map((participant) => (
-                <li key={participant.name} className="rounded-full bg-mint px-3 py-1 text-sm font-semibold text-leaf">
+                <li key={participant.name} className="rounded-full bg-yonsei-light px-3 py-1 text-sm font-semibold text-yonsei-secondary">
                   {participant.name}
                 </li>
               ))}
@@ -77,7 +77,7 @@ function Info({ label, value, icon }: { label: string; value: string; icon?: Rea
   return (
     <div className="rounded-2xl bg-stone-50 p-4">
       <dt className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-stone-500">
-        {icon ? <span className="text-leaf">{icon}</span> : null}
+        {icon ? <span className="text-yonsei-secondary">{icon}</span> : null}
         {label}
       </dt>
       <dd className="mt-2 font-semibold text-ink">{value}</dd>

@@ -21,8 +21,8 @@ export default async function HostMeetupPage({ params }: { params: Promise<{ id:
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
-      <Link className="text-sm font-bold text-leaf" href="/dashboard">Back to dashboard</Link>
-      <section className="mt-4 rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
+      <Link className="text-sm font-bold text-yonsei-secondary" href="/dashboard">Back to dashboard</Link>
+      <section className="mt-4 rounded-3xl border border-blue-soft bg-white p-6 shadow-soft">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h1 className="text-3xl font-black text-ink">{meetup.title}</h1>
@@ -40,11 +40,11 @@ export default async function HostMeetupPage({ params }: { params: Promise<{ id:
         </dl>
         <p className="mt-6 whitespace-pre-line leading-7 text-stone-700">{meetup.description}</p>
       </section>
-      <section className="mt-6 rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
+      <section className="mt-6 rounded-3xl border border-blue-soft bg-white p-6 shadow-soft">
         <h2 className="text-xl font-black text-ink">Participants</h2>
         <div className="mt-4 grid gap-3">
           {meetup.participants.map((participant) => (
-            <div key={participant.id} className="rounded-2xl border border-stone-200 p-4">
+            <div key={participant.id} className="rounded-2xl border border-blue-soft p-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">

@@ -36,19 +36,19 @@ export default async function DashboardPage() {
           const hasParticipants = meetup.participants.length > 0;
 
           return (
-            <article key={meetup.id} className="rounded-3xl border border-stone-200 bg-white p-5 shadow-soft">
+            <article key={meetup.id} className="rounded-3xl border border-blue-soft bg-white p-5 shadow-soft">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div>
-                  <Link className="text-2xl font-black text-ink hover:text-leaf" href={`/dashboard/meetups/${meetup.id}`}>
+                  <Link className="text-2xl font-black text-ink hover:text-yonsei-secondary" href={`/dashboard/meetups/${meetup.id}`}>
                     {meetup.title}
                   </Link>
                   <p className="mt-2 text-sm text-stone-600">{meetup.location} · {formatDateTime(meetup.starts_at)}</p>
-                  <p className="mt-2 text-sm font-semibold text-leaf">{approved.length}/{meetup.max_participants} joined · {meetup.status === "CLOSED" ? "Closed" : "Open"}</p>
+                  <p className="mt-2 text-sm font-semibold text-yonsei-secondary">{approved.length}/{meetup.max_participants} joined · {meetup.status === "CLOSED" ? "Closed" : "Open"}</p>
                 </div>
                 <MeetupHostActions meetupId={meetup.id} status={meetup.status} />
               </div>
-              <div className="mt-5 rounded-2xl bg-mint p-4">
-                <p className="text-sm font-bold text-leaf">Private WhatsApp link</p>
+              <div className="mt-5 rounded-2xl bg-yonsei-light p-4">
+                <p className="text-sm font-bold text-yonsei-secondary">Private WhatsApp link</p>
                 <p className="mt-1 break-all text-sm text-ink">{meetup.whatsapp_link}</p>
               </div>
               {hasParticipants ? (
@@ -100,7 +100,7 @@ function RequestGroup({
       <h2 className="text-sm font-black uppercase tracking-wide text-stone-500">{title}</h2>
       <div className="mt-3 grid gap-3">
         {participants.map((participant) => (
-          <div key={participant.id} className="rounded-2xl border border-stone-200 p-4">
+          <div key={participant.id} className="rounded-2xl border border-blue-soft p-4">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <div className="flex flex-wrap items-center gap-2">

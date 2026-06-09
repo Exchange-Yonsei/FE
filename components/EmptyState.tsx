@@ -12,7 +12,7 @@ export function EmptyState({
   action?: string;
 }) {
   return (
-    <div className="rounded-3xl border border-dashed border-stone-300 bg-white/75 p-8 text-center">
+    <div className="rounded-3xl border border-dashed border-blue-soft bg-white/75 p-8 text-center">
       <h2 className="text-lg font-bold text-ink">{title}</h2>
       <p className="mt-2 text-sm text-stone-600">{description}</p>
       {href && action ? (

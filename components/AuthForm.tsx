@@ -46,7 +46,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   }
 
   return (
-    <form onSubmit={submit} className="mx-auto max-w-md rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
+    <form onSubmit={submit} className="mx-auto max-w-md rounded-3xl border border-blue-soft bg-white p-6 shadow-soft">
       <h1 className="text-2xl font-black text-ink">{mode === "login" ? "Host login" : "Create a host account"}</h1>
       <p className="mt-2 text-sm text-stone-600">
         {mode === "login" ? "Manage your Yonsei meetups." : "Use email and password. No OAuth or university verification yet."}
@@ -75,7 +75,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </button>
       <p className="mt-4 text-center text-sm text-stone-600">
         {mode === "login" ? "New host?" : "Already have an account?"}{" "}
-        <Link className="font-bold text-leaf" href={mode === "login" ? "/signup" : "/login"}>
+        <Link className="font-bold text-yonsei-secondary" href={mode === "login" ? "/signup" : "/login"}>
           {mode === "login" ? "Sign up" : "Log in"}
         </Link>
       </p>

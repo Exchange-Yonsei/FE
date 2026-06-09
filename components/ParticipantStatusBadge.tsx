@@ -1,9 +1,9 @@
 import type { ParticipantStatus } from "@/lib/types";
 
 const styles: Record<ParticipantStatus, string> = {
-  PENDING: "bg-amber-100 text-amber-800",
-  APPROVED: "bg-emerald-100 text-emerald-800",
-  REJECTED: "bg-rose-100 text-rose-800"
+  PENDING: "border border-blue-soft bg-yonsei-light text-yonsei-primary",
+  APPROVED: "border border-blue-soft bg-sky text-yonsei-primary",
+  REJECTED: "border border-blue-soft bg-white text-stone-700"
 };
 
 export function ParticipantStatusBadge({ status }: { status: ParticipantStatus }) {

@@ -114,7 +114,7 @@ export function MeetupForm() {
   }
 
   return (
-    <form onSubmit={submit} className="rounded-3xl border border-stone-200 bg-white p-5 shadow-soft sm:p-8">
+    <form onSubmit={submit} className="rounded-3xl border border-blue-soft bg-white p-5 shadow-soft sm:p-8">
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block space-y-2 sm:col-span-2">
           <span className="label">Title</span>

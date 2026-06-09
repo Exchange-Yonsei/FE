@@ -24,7 +24,7 @@ export default async function RequestPage({
           Your request has been sent. The host will review it soon.
         </div>
       ) : null}
-      <section className="rounded-3xl border border-stone-200 bg-white p-6 shadow-soft">
+      <section className="rounded-3xl border border-blue-soft bg-white p-6 shadow-soft">
         <div className="flex flex-wrap items-center gap-3">
           <ParticipantStatusBadge status={request.status} />
           <span className="text-sm text-stone-500">Request ID: {request.id}</span>
@@ -49,7 +49,7 @@ export default async function RequestPage({
           </div>
         ) : null}
       </section>
-      <Link className="mt-5 inline-flex text-sm font-bold text-leaf" href="/meetups">
+      <Link className="mt-5 inline-flex text-sm font-bold text-yonsei-secondary" href="/meetups">
         Browse more meetups
       </Link>
     </main>

@@ -9,14 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#17211d",
-        leaf: "#2f6f5e",
-        mint: "#dff5ec",
-        peach: "#ffdfc7",
-        sky: "#dbeafe"
+        ink: "#102A43",
+        leaf: "#003876",
+        mint: "#F0F6FF",
+        peach: "#D8E7FF",
+        sky: "#D8E7FF",
+        "yonsei-primary": "#003876",
+        "yonsei-secondary": "#005BAC",
+        "yonsei-light": "#F0F6FF",
+        "blue-soft": "#D8E7FF"
       },
       boxShadow: {
-        soft: "0 18px 50px rgba(23, 33, 29, 0.08)"
+        soft: "0 18px 50px rgba(16, 42, 67, 0.08)"
       }
     }
   },

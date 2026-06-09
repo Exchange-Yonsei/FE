@@ -14,7 +14,7 @@ export async function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-stone-200/70 bg-[#fbfaf6]/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-blue-soft/70 bg-yonsei-light/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="inline-flex items-center gap-2 text-sm font-black text-ink">
           <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-leaf text-white">
@@ -23,7 +23,7 @@ export async function Header() {
           LocalMate Yonsei
         </Link>
         <div className="flex items-center gap-2">
-          <Link className="hidden text-sm font-semibold text-stone-700 sm:inline" href="/meetups">
+          <Link className="hidden text-sm font-semibold text-yonsei-secondary sm:inline" href="/meetups">
             Meetups
           </Link>
           {isLoggedIn ? (

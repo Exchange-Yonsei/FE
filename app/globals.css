@@ -4,15 +4,15 @@
 
 :root {
   color-scheme: light;
-  background: #fbfaf6;
+  background: #f0f6ff;
 }
 
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(223, 245, 236, 0.9), transparent 34rem),
-    linear-gradient(180deg, #fbfaf6 0%, #f6f7f3 100%);
-  color: #17211d;
+    radial-gradient(circle at top left, rgba(216, 231, 255, 0.85), transparent 34rem),
+    linear-gradient(180deg, #f0f6ff 0%, #ffffff 58%, #f8fbff 100%);
+  color: #102a43;
 }
 
 input,
@@ -22,7 +22,7 @@ select {
 }
 
 .field {
-  @apply w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-leaf focus:ring-4 focus:ring-mint;
+  @apply w-full rounded-2xl border border-blue-soft bg-white px-4 py-3 text-sm text-ink outline-none transition focus:border-yonsei-secondary focus:ring-4 focus:ring-sky;
 }
 
 .label {
@@ -30,9 +30,9 @@ select {
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-yonsei-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-yonsei-secondary focus:outline-none focus:ring-4 focus:ring-sky disabled:cursor-not-allowed disabled:opacity-60;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-full border border-stone-200 bg-white px-5 py-3 text-sm font-semibold text-ink transition hover:border-leaf hover:text-leaf disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-blue-soft bg-white px-5 py-3 text-sm font-semibold text-yonsei-secondary transition hover:border-yonsei-secondary hover:bg-yonsei-light focus:outline-none focus:ring-4 focus:ring-sky disabled:cursor-not-allowed disabled:opacity-60;
 }

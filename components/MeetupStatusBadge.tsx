@@ -8,10 +8,10 @@ export function MeetupStatusBadge({
   const label = status === "CLOSED" ? "Closed" : isFull ? "Full" : "Open";
   const style =
     status === "CLOSED"
-      ? "bg-stone-200 text-stone-700"
+      ? "border border-blue-soft bg-stone-100 text-stone-700"
       : isFull
-        ? "bg-sky text-blue-800"
-        : "bg-emerald-100 text-emerald-800";
+        ? "border border-blue-soft bg-sky text-yonsei-primary"
+        : "border border-blue-soft bg-yonsei-light text-yonsei-primary";
 
   return <span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${style}`}>{label}</span>;
 }
